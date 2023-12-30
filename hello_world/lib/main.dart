@@ -9,13 +9,12 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       home: Scaffold(
         appBar: AppBar(
-          title: const Text('App Hello World'),
+          title: const Text('Hello World Demo'),
         ),
         body: const Center(
-          child: Text('Hello World'),
+          child: Text('I welcome you all '),
         )
       ),  
     );
   }
 }
-
