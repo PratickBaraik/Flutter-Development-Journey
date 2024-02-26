@@ -10,5 +10,8 @@ void main() {
 
 String? myString() {
   String bookName = "Treasure Island";
-  return null;
+
+  // this will print the name of book
+  print(bookName);
+  return null; // this will be called after printing the name
 }
