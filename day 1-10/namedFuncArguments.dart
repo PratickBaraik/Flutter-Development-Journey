@@ -7,5 +7,5 @@ String greet(String name, {String title = ''}) {
 }
 
 void main() {
-  print(greet('Pratick', title: 'Dev')); // Output: Hello Professor Alice!
+  print(greet('Pratick', title: 'Dev'));
 }
