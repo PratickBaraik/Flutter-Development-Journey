@@ -1,6 +1,6 @@
 # flutter_demo8
 
-Experimenting with flutter widgets
+A new Flutter project.
 
 ## Getting Started
 
