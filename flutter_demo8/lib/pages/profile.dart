@@ -10,7 +10,7 @@ class ProfilePage extends StatelessWidget {
         child:Text(
           'Profile Page',
           style: TextStyle(
-            fontSize: 30,
+            fontSize: 24,
             fontWeight: FontWeight.bold,
           ),
         ),

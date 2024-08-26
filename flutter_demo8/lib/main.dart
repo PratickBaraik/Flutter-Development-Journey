@@ -15,6 +15,28 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
+
+  //keeps track of the current page to display
+  int _selectedIndex = 0;
+
+  //method which updates the index of pages
+  void _navBottomBar(int index) {
+    setState(() {
+      _selectedIndex = index;
+    });
+  }
+
+  final List _pages = [
+    //home
+    HomePage(),
+
+    //profile
+    ProfilePage(),
+
+    //settings
+    SettingsPage()
+  ];
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -61,9 +83,12 @@ class _MyAppState extends State<MyApp> {
           backgroundColor: Colors.amber[700],
         ),
 
-
+        body: _pages[_selectedIndex],
 
         bottomNavigationBar: BottomNavigationBar(
+          currentIndex: _selectedIndex,
+          onTap: _navBottomBar,
+
           items: const [
             //home
             BottomNavigationBarItem(

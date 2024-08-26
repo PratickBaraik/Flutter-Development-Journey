@@ -10,7 +10,7 @@ class SettingsPage extends StatelessWidget {
         child:Text(
           'Settings Page',
           style: TextStyle(
-            fontSize: 30,
+            fontSize: 24,
             fontWeight: FontWeight.bold,
           ),
         ),
