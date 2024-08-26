@@ -26,7 +26,7 @@ class _MyAppState extends State<MyApp> {
     });
   }
 
-  final List _pages = [
+  final List _pages = const [
     //home
     HomePage(),
 
@@ -45,9 +45,9 @@ class _MyAppState extends State<MyApp> {
       theme: ThemeData(
         iconButtonTheme: IconButtonThemeData(
           style: ButtonStyle(
-            foregroundColor: MaterialStateProperty.all<Color>(
+            foregroundColor: WidgetStateProperty.all<Color>(
                 Colors.white
-            ),
+            ), // Updated line
           ),
         ),
       ),
