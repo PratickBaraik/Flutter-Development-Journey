@@ -7,9 +7,14 @@ void main() {
   runApp(const MyApp());
 }
 
-class MyApp extends StatelessWidget {
+class MyApp extends StatefulWidget {
   const MyApp({super.key});
 
+  @override
+  State<MyApp> createState() => _MyAppState();
+}
+
+class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -52,6 +57,36 @@ class MyApp extends StatelessWidget {
               onPressed: () {},
             ),
           ],
+
+          backgroundColor: Colors.amber[700],
+        ),
+
+
+
+        bottomNavigationBar: BottomNavigationBar(
+          items: const [
+            //home
+            BottomNavigationBarItem(
+                icon: Icon(Icons.home_rounded),
+                label: 'HOME',
+            ),
+
+            //profile
+            BottomNavigationBarItem(
+              icon: Icon(Icons.person_rounded),
+              label: 'PROFILE',
+            ),
+
+            //settings
+            BottomNavigationBarItem(
+              icon: Icon(Icons.settings_rounded),
+              label: 'SETTINGS',
+            ),
+          ],
+
+          selectedItemColor: Colors.white,
+
+          unselectedItemColor: Colors.black,
 
           backgroundColor: Colors.amber[700],
         ),
