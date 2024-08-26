@@ -12,8 +12,50 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
+    return MaterialApp(
       debugShowCheckedModeBanner: false,
+
+      theme: ThemeData(
+        iconButtonTheme: IconButtonThemeData(
+          style: ButtonStyle(
+            foregroundColor: MaterialStateProperty.all<Color>(
+                Colors.white
+            ),
+          ),
+        ),
+      ),
+
+      home: Scaffold(
+
+        appBar: AppBar(
+
+          leading: IconButton(
+            iconSize: 32,
+            icon: const Icon(Icons.menu_rounded),
+            onPressed: () {},
+          ),
+
+          title: const Text(
+            'Demo 8',
+            style: TextStyle(
+              fontSize: 28,
+              color: Colors.white,
+            ),
+          ),
+
+          centerTitle: true,
+
+          actions: [
+            IconButton(
+              iconSize: 32,
+              icon: const Icon(Icons.logout_rounded),
+              onPressed: () {},
+            ),
+          ],
+
+          backgroundColor: Colors.amber[700],
+        ),
+      ),
     );
   }
 }
