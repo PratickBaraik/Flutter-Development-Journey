@@ -49,11 +49,13 @@ class ToDoTile extends StatelessWidget {
                 onChanged: onChanged,
               ),
               //task name
-              Text(
-                taskName,
-                style: TextStyle(
-                  fontSize: 16,
-                  decoration: taskCompleted ? TextDecoration.lineThrough : TextDecoration.none,
+              Flexible(
+                child: Text(
+                  taskName,
+                  style: TextStyle(
+                    fontSize: 16,
+                    decoration: taskCompleted ? TextDecoration.lineThrough : TextDecoration.none,
+                  ),
                 ),
               ),
             ],
