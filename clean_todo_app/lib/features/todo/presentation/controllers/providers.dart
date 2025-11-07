@@ -5,7 +5,8 @@ import '../../domain/usecases/get_todos.dart';
 import '../../domain/usecases/add_todo.dart';
 import '../../domain/usecases/toggle_todo.dart';
 import '../../domain/usecases/delete_todo.dart';
-import 'todo_controller.dart';
+import '../../domain/entities/todo_entity.dart';
+import '../controllers/todo_controller.dart';
 import 'package:hive/hive.dart';
 import '../../data/models/todo_model.dart';
 

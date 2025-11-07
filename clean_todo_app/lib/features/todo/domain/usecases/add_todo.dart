@@ -1,9 +1,9 @@
 import '../entities/todo_entity.dart';
 import '../repositories/todo_repository.dart';
 
-class GetTodos {
+class AddTodo {
   final TodoRepository repo;
-  GetTodos(this.repo);
+  AddTodo(this.repo);
 
-  Future<List<TodoEntity>> call() => repo.getTodos();
+  Future<void> call(TodoEntity e) => repo.addTodo(e);
 }
