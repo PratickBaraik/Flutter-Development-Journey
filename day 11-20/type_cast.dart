@@ -14,11 +14,7 @@ main() {
 
   // second way
   String intToStr = 124.toString();
-  if (intToStr is String) {
-    print(intToStr);
-  } else {
-    print("Next time!");
-  }
+  print(intToStr);
 
   String doubleToStr = 3.14159.toStringAsFixed(3);
   assert(doubleToStr == '3.141');

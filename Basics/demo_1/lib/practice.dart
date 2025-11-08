@@ -1,6 +1,6 @@
 void main() {
     String firstName = "Pratick";
-    name(firstName!);
+    name(firstName);
 }
 
 void name(String name) {

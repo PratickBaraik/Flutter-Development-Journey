@@ -14,7 +14,7 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       home: Scaffold(
         appBar: AppBar(
-          title: Text("Demo 5"),
+          title: const Text("Demo 5"),
         ),
         body: Stack(
           alignment: Alignment.topRight,

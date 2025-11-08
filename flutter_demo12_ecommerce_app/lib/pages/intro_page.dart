@@ -7,7 +7,7 @@ class IntroPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.grey[300],
-      body: Column(
+      body: const Column(
         children: [
           // logo
           

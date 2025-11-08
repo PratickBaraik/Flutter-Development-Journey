@@ -17,7 +17,7 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       home: Scaffold(
         appBar: AppBar(
-          title: Text("Demo 6"),
+          title: const Text("Demo 6"),
         ),
         body: Center(
           child: Container(
@@ -27,7 +27,7 @@ class MyApp extends StatelessWidget {
             child: Center(
               child: GestureDetector(
                 onTap: userTapped,
-                child: Text(
+                child: const Text(
                   "Tap Here!",
                   style: TextStyle(
                     fontSize: 22,

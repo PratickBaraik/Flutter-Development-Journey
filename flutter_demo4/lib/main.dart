@@ -14,12 +14,12 @@ class MyApp extends StatelessWidget {
       home: Scaffold(
         appBar: AppBar(
           backgroundColor: Colors.amber[700],
-          leading: Icon(
+          leading: const Icon(
             Icons.menu_rounded,
             size: 30,
             color: Colors.white,
           ),
-          title: Text(
+          title: const Text(
             "Demo 4",
             style: TextStyle(
               fontSize: 26,
@@ -27,7 +27,7 @@ class MyApp extends StatelessWidget {
               color: Colors.white,
             ),
           ),
-          actions: [
+          actions: const [
             Icon(
               Icons.logout_rounded,
               size: 30,
@@ -38,10 +38,10 @@ class MyApp extends StatelessWidget {
         body: GridView.builder(
           itemCount: 36,
           gridDelegate:
-              SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 6),
+              const SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 6),
           itemBuilder: (context, index) => Container(
             color: Colors.amber[500],
-            margin: EdgeInsets.all(4),
+            margin: const EdgeInsets.all(4),
           ),
         ),
       ),

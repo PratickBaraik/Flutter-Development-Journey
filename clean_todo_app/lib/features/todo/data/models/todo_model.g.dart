@@ -45,3 +45,4 @@ class TodoModelAdapter extends TypeAdapter<TodoModel> {
           runtimeType == other.runtimeType &&
           typeId == other.typeId;
 }
+ 

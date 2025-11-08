@@ -18,7 +18,7 @@ class _ToDoPageState extends State<ToDoPage> {
   //greet the user method
   void greetUser() {
     setState(() {
-      greetingMessage = "Added: " + myController.text;
+      greetingMessage = "Added: ${myController.text}";
     });
   }
 
