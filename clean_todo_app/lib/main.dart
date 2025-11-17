@@ -5,8 +5,6 @@ import 'core/theme/app_theme.dart';
 import 'core/theme/theme_mode_provider.dart';
 import 'features/todo/data/models/todo_model.dart';
 import 'features/todo/presentation/pages/home_page.dart';
-import 'features/todo/presentation/controllers/providers.dart';
-import 'features/todo/domain/entities/todo_entity.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
