@@ -4,5 +4,6 @@ void main() {
 }
 
 void name(String name) {
+    // ignore: avoid_print
     print("I am $name");
 }
