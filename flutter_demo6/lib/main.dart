@@ -8,6 +8,7 @@ class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
   void userTapped() {
+    // ignore: avoid_print
     print("User Tapped.");
   }
 
