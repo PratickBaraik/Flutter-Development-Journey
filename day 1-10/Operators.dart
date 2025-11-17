@@ -17,17 +17,17 @@ void main() {
   print(5 * 7 + 8 / 2 - 1 % 10); // precedence from left
 
   // using the type test operator
-  String name = "Pratick";
+  // String name = "Pratick";
   double value = 33.22;
   int price = 13000;
 
   // using 'is' operator to compare
-  print(name is String); // true
+  // print(name is String); // true
   print(value is int); // false
   print(price is double); // false
 
-  print(value is double); // true
-  print(price is int); // true
+  // print(value is double); // true
+  // print(price is int); // true
 
   // using the 'as' operator
   dynamic myVar = "Dart"; // using dynamic to change the value in run time.
