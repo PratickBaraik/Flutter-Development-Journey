@@ -9,7 +9,7 @@ class HomePage extends StatelessWidget {
     return Scaffold(
       body: ListView(
         children: [
-          HomeAppBar(),
+          const HomeAppBar(),
           Container(
             // adding temporary height
             height: 500,

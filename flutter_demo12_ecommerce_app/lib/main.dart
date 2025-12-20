@@ -4,6 +4,8 @@ import 'package:flutter_demo12_ecommerce_app/pages/HomePage.dart';
 void main() => runApp(MyApp());
 
 class MyApp extends StatelessWidget {
+  const MyApp({super.key});
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -11,6 +13,6 @@ class MyApp extends StatelessWidget {
         theme: ThemeData(
           scaffoldBackgroundColor: Colors.white,
         ),
-        routes: {"/": (context) => HomePage()});
+        routes: {"/": (context) => const HomePage()});
   }
 }
