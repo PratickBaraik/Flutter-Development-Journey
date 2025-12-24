@@ -59,7 +59,7 @@ class HomePage extends StatelessWidget {
                     vertical: 20,
                     horizontal: 10,
                   ),
-                  child: Text(
+                  child: const Text(
                     "Categories",
                     style: TextStyle(
                       fontSize: 25,
