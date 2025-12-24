@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_demo12_ecommerce_app/widgets/CategoriesWidget.dart';
 import 'package:flutter_demo12_ecommerce_app/widgets/HomeAppBar.dart';
 
 class HomePage extends StatelessWidget {
@@ -52,6 +53,22 @@ class HomePage extends StatelessWidget {
                     ],
                   ),
                 ),
+                Container(
+                  alignment: Alignment.centerLeft,
+                  margin: const EdgeInsets.symmetric(
+                    vertical: 20,
+                    horizontal: 10,
+                  ),
+                  child: Text(
+                    "Categories",
+                    style: TextStyle(
+                      fontSize: 25,
+                      fontWeight: FontWeight.bold,
+                      color: Color(0xFF4C53A5),
+                    ),
+                  ),
+                ),
+                CategoriesWidget(),
               ],
             ),
           ),
