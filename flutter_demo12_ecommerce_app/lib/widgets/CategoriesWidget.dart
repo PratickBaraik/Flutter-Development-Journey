@@ -18,7 +18,9 @@ class CategoriesWidget extends StatelessWidget {
               ),
               child: const Row(
                 crossAxisAlignment: CrossAxisAlignment.center,
-                children: [],
+                children: [
+                  
+                ],
               )),
         ],
       ),
