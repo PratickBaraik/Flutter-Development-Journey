@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_demo12_ecommerce_app/pages/CartPage.dart';
 import 'package:flutter_demo12_ecommerce_app/pages/HomePage.dart';
 
 void main() => runApp(const MyApp());
@@ -9,10 +10,15 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-        debugShowCheckedModeBanner: false,
-        theme: ThemeData(
-          scaffoldBackgroundColor: Colors.white,
-        ),
-        routes: {"/": (context) => const HomePage()});
+      debugShowCheckedModeBanner: false,
+      theme: ThemeData(
+        scaffoldBackgroundColor: Colors.white,
+      ),
+      routes: {
+        "/": (context) => HomePage(),
+        "cartPage": (context) => CartPage()
+        
+      },
+    );
   }
 }
