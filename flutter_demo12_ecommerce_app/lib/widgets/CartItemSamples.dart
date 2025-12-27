@@ -2,12 +2,15 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class CartItemSamples extends StatelessWidget {
+  const CartItemSamples({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Column(
       children: [
+        for(int i = 1; i <= 3; i++)
         Container(
-          height: 110,
+          // height: 110,
           margin: EdgeInsets.symmetric(
             horizontal: 15,
             vertical: 10,
@@ -29,10 +32,10 @@ class CartItemSamples extends StatelessWidget {
                 onChanged: (index) {}
               ),
               Container(
-                height: 70,
-                width: 70,
+                height: 100,
+                width: 100,
                 margin: EdgeInsets.only(right: 15),
-                child: Image.asset("images/1.jpg"),
+                child: Image.asset("images/$i.jpg"),
               ),
               Padding(
                 padding: EdgeInsets.symmetric(
@@ -95,6 +98,21 @@ class CartItemSamples extends StatelessWidget {
                             size: 18,
                           ),
                         ),
+
+                        Container(
+                          margin: EdgeInsets.symmetric(
+                            horizontal: 10,
+                          ),
+                          child: Text(
+                            "01",
+                            style: TextStyle(
+                              fontSize: 16,
+                              fontWeight: FontWeight.bold,
+                              color: Color(0xFF4C53A5)
+                            ),
+                          ),
+                        ),
+
                         Container(
                           padding: EdgeInsets.all(4),
                           decoration: BoxDecoration(
