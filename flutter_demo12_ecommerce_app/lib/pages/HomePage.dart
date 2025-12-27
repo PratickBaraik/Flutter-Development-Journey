@@ -48,7 +48,7 @@ class HomePage extends StatelessWidget {
                               hintText: 'Search here...'),
                         ),
                       ),
-                      Spacer(),
+                      const Spacer(),
                       const Icon(
                         Icons.camera_alt,
                         size: 30,
