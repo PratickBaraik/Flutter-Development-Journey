@@ -105,6 +105,7 @@ class HomePage extends StatelessWidget {
         },
         height: 70,
         color: const Color(0xFF4C53A5),
+        // ignore: deprecated_member_use
         buttonBackgroundColor: const Color(0xFF4C53A5).withOpacity(0.95),
         items: const [
           Icon(Icons.home, size: 30, color: Colors.white),
