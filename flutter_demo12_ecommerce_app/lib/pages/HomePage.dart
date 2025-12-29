@@ -5,20 +5,13 @@ import 'package:flutter_demo12_ecommerce_app/widgets/CategoriesWidget.dart';
 import 'package:flutter_demo12_ecommerce_app/widgets/HomeAppBar.dart';
 import 'package:flutter_demo12_ecommerce_app/widgets/ItemsWidget.dart';
 
-class HomePage extends StatefulWidget {
-  const HomePage({super.key});
-
-  @override
-  State<HomePage> createState() => _HomePageState();
-}
-
-class _HomePageState extends State<HomePage> {
-  int currentIndex = 0;
+class HomePage extends StatelessWidget {
+  const HomePage({super.key}); // Added required super.key
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      extendBody: true, // Key: Allows body to extend under nav bar
+      extendBody: true, // Essential for transparency
       body: ListView(
         children: [
           const HomeAppBar(),
@@ -44,18 +37,18 @@ class _HomePageState extends State<HomePage> {
                   ),
                   child: Row(
                     children: [
-                      Container(
-                        margin: const EdgeInsets.only(left: 5),
-                        height: 50,
-                        width: 300,
-                        child: TextFormField(
-                          decoration: const InputDecoration(
-                            border: InputBorder.none,
-                            hintText: 'Search here...',
+                      Expanded( // Replaced fixed width with Expanded
+                        child: Container(
+                          margin: const EdgeInsets.only(left: 5),
+                          height: 50,
+                          child: TextFormField(
+                            decoration: const InputDecoration(
+                              border: InputBorder.none,
+                              hintText: 'Search here...',
+                            ),
                           ),
                         ),
                       ),
-                      const Spacer(),
                       const Icon(
                         Icons.camera_alt,
                         size: 30,
@@ -81,12 +74,12 @@ class _HomePageState extends State<HomePage> {
                     ),
                   ),
                 ),
-                CategoriesWidget(),
+                const CategoriesWidget(),
 
                 // Best Selling Section
                 Container(
                   alignment: Alignment.centerLeft,
-                  margin: EdgeInsets.symmetric(vertical: 20, horizontal: 10),
+                  margin: const EdgeInsets.symmetric(vertical: 20, horizontal: 10),
                   child: const Text(
                     "Best Selling",
                     style: TextStyle(
@@ -97,19 +90,18 @@ class _HomePageState extends State<HomePage> {
                   ),
                 ),
 
-                ItemsWidget(),
+                const ItemsWidget(),
               ],
             ),
           ),
         ],
       ),
       bottomNavigationBar: CurvedNavigationBar(
+        index: 0, // Fixed: Added default index
         backgroundColor: Colors.transparent,
-        index: currentIndex, // Track selected index
         onTap: (index) {
-          setState(() {
-            currentIndex = index;
-          });
+          // Print for debugging - replace with navigation logic
+          debugPrint('Nav tab tapped: $index');
         },
         height: 70,
         color: const Color(0xFF4C53A5),
