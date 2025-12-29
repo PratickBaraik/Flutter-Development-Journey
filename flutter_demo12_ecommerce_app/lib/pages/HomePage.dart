@@ -5,18 +5,24 @@ import 'package:flutter_demo12_ecommerce_app/widgets/CategoriesWidget.dart';
 import 'package:flutter_demo12_ecommerce_app/widgets/HomeAppBar.dart';
 import 'package:flutter_demo12_ecommerce_app/widgets/ItemsWidget.dart';
 
-class HomePage extends StatelessWidget {
+class HomePage extends StatefulWidget {
   const HomePage({super.key});
+
+  @override
+  State<HomePage> createState() => _HomePageState();
+}
+
+class _HomePageState extends State<HomePage> {
+  int currentIndex = 0;
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      extendBody: true, // Key: Allows body to extend under nav bar
       body: ListView(
         children: [
           const HomeAppBar(),
           Container(
-            // adding temporary height
-            // height: 500,
             padding: const EdgeInsets.only(top: 15),
             decoration: const BoxDecoration(
               color: Color(0xFFEDECF2),
@@ -27,6 +33,7 @@ class HomePage extends StatelessWidget {
             ),
             child: Column(
               children: [
+                // Search bar
                 Container(
                   margin: const EdgeInsets.symmetric(horizontal: 15),
                   padding: const EdgeInsets.symmetric(horizontal: 15),
@@ -36,7 +43,6 @@ class HomePage extends StatelessWidget {
                     borderRadius: BorderRadius.circular(30),
                   ),
                   child: Row(
-                    // search bar section
                     children: [
                       Container(
                         margin: const EdgeInsets.only(left: 5),
@@ -44,8 +50,9 @@ class HomePage extends StatelessWidget {
                         width: 300,
                         child: TextFormField(
                           decoration: const InputDecoration(
-                              border: InputBorder.none,
-                              hintText: 'Search here...'),
+                            border: InputBorder.none,
+                            hintText: 'Search here...',
+                          ),
                         ),
                       ),
                       const Spacer(),
@@ -74,55 +81,43 @@ class HomePage extends StatelessWidget {
                     ),
                   ),
                 ),
-                // categories widget
                 CategoriesWidget(),
 
-                // items
+                // Best Selling Section
                 Container(
-                  alignment: Alignment.centerLeft, 
-                  margin: EdgeInsets.symmetric(vertical: 20, horizontal: 10,),
-                  child: Text(
-                    "Best Selling", 
-                      style: TextStyle(
-                      fontSize: 25, 
-                      fontWeight: FontWeight.bold, 
+                  alignment: Alignment.centerLeft,
+                  margin: EdgeInsets.symmetric(vertical: 20, horizontal: 10),
+                  child: const Text(
+                    "Best Selling",
+                    style: TextStyle(
+                      fontSize: 25,
+                      fontWeight: FontWeight.bold,
                       color: Color(0xFF4C53A5),
                     ),
                   ),
                 ),
 
-                // items widget 
                 ItemsWidget(),
               ],
             ),
           ),
         ],
       ),
-
-      // bottom navigation bar
       bottomNavigationBar: CurvedNavigationBar(
         backgroundColor: Colors.transparent,
+        index: currentIndex, // Track selected index
         onTap: (index) {
-          
+          setState(() {
+            currentIndex = index;
+          });
         },
         height: 70,
-        color: Color(0xFF4C53A5),
-        items: [
-          Icon(
-            Icons.home,
-            size: 30,
-            color: Colors.white
-          ),
-          Icon(
-            CupertinoIcons.cart_fill,
-            size: 30,
-            color: Colors.white
-          ),
-          Icon(
-            Icons.list,
-            size: 30,
-            color: Colors.white
-          ),
+        color: const Color(0xFF4C53A5),
+        buttonBackgroundColor: const Color(0xFF4C53A5).withOpacity(0.95),
+        items: const [
+          Icon(Icons.home, size: 30, color: Colors.white),
+          Icon(CupertinoIcons.cart_fill, size: 30, color: Colors.white),
+          Icon(Icons.list, size: 30, color: Colors.white),
         ],
       ),
     );
