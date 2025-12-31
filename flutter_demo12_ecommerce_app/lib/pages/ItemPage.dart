@@ -16,6 +16,8 @@ class ItemPage extends StatelessWidget {
     Colors.orange,
   ];
 
+  ItemPage({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
