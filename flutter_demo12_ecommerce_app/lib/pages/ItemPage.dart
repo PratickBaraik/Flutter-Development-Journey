@@ -5,6 +5,7 @@ import 'package:flutter_demo12_ecommerce_app/widgets/ItemAppBar.dart';
 import 'package:flutter_demo12_ecommerce_app/widgets/ItemBottomNavBar.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 
+// ignore: must_be_immutable
 class ItemPage extends StatelessWidget {
   // const ItemPage({super.key});
 
