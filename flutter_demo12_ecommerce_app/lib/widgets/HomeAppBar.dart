@@ -7,7 +7,7 @@ class HomeAppBar extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       color: Colors.white,
-      padding: const EdgeInsets.all(25),
+      padding: const EdgeInsets.all(15),
       child: Row(
         children: [
           const Icon(
@@ -29,24 +29,27 @@ class HomeAppBar extends StatelessWidget {
             ),
           ),
           const Spacer(),
-          Badge(
-            backgroundColor: Colors.red,
-            padding: const EdgeInsets.all(7),
-            label: const Text(
-              '3',
-              style: TextStyle(
-                color: Colors.white,
-                // fontSize: 10,
+          Padding(
+            padding: const EdgeInsets.only(right: 15),
+            child: Badge(
+              backgroundColor: Colors.red,
+              padding: const EdgeInsets.all(7),
+              label: const Text(
+                '3',
+                style: TextStyle(
+                  color: Colors.white,
+                  // fontSize: 10,
+                ),
               ),
-            ),
-            child: InkWell(
-              onTap: () {
-                Navigator.pushNamed(context, "cartPage");
-              },
-              child: const Icon(
-                Icons.shopping_bag_outlined,
-                size: 35,
-                color: Color(0xFF4C52A5),
+              child: InkWell(
+                onTap: () {
+                  Navigator.pushNamed(context, "cartPage");
+                },
+                child: const Icon(
+                  Icons.shopping_bag_outlined,
+                  size: 35,
+                  color: Color(0xFF4C52A5),
+                ),
               ),
             ),
           )
