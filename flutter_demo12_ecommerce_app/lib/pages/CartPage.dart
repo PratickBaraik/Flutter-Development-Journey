@@ -53,6 +53,7 @@ class CartPage extends StatelessWidget {
                               color: Color(0xFF4C53A5),
                               fontWeight: FontWeight.bold,
                               fontSize: 16,
+                              // fontFamily: 'helvetica',
                             ),
                           ),
                         ),
