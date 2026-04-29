@@ -21,8 +21,8 @@ class TwoProductCardColumn extends StatelessWidget {
   const TwoProductCardColumn({
     required this.bottom,
     this.top,
-    Key? key,
-  }) : super(key: key);
+    super.key,
+  });
 
   final Product bottom;
   final Product? top;
@@ -69,8 +69,7 @@ class TwoProductCardColumn extends StatelessWidget {
 }
 
 class OneProductCardColumn extends StatelessWidget {
-  const OneProductCardColumn({required this.product, Key? key})
-      : super(key: key);
+  const OneProductCardColumn({required this.product, super.key});
 
   final Product product;
 

@@ -19,7 +19,7 @@ import 'login.dart';
 
 // TODO: Convert ShrineApp to stateful widget (104)
 class ShrineApp extends StatelessWidget {
-  const ShrineApp({Key? key}) : super(key: key);
+  const ShrineApp({super.key});
 
   @override
   Widget build(BuildContext context) {

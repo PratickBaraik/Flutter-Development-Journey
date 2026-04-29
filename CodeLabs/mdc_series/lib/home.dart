@@ -15,7 +15,7 @@
 import 'package:flutter/material.dart';
 
 class HomePage extends StatelessWidget {
-  const HomePage({Key? key}) : super(key: key);
+  const HomePage({super.key});
 
   // TODO: Make a collection of cards (102)
   // TODO: Add a variable for Category (104)
