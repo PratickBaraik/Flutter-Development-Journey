@@ -36,11 +36,11 @@ class ShrineApp extends StatelessWidget {
               // TODO: Make currentCategory field take _currentCategory (104)
               currentCategory: Category.all,
               // TODO: Pass _currentCategory for frontLayer (104)
-              frontLayer: HomePage(),
+              frontLayer: const HomePage(),
               // TODO: Change backLayer field value to CategoryMenuPage (104)
               backLayer: Container(color: kShrinePink100),
-              frontTitle: Text('SHRINE'),
-              backTitle: Text('MENU'),
+              frontTitle: const Text('SHRINE'),
+              backTitle: const Text('MENU'),
             ),
       },
       // TODO: Customize the theme (103)

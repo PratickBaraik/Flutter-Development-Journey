@@ -54,12 +54,12 @@ class _BackdropState extends State<Backdrop>
       // TODO: Replace leading menu icon with IconButton (104)
       // TODO: Remove leading property (104)
       // TODO: Create title with _BackdropTitle parameter (104)
-      leading: Icon(Icons.menu),
-      title: Text('SHRINE'),
+      leading: const Icon(Icons.menu),
+      title: const Text('SHRINE'),
       actions: <Widget>[
         // TODO: Add shortcut to login screen from trailing icons (104)
         IconButton(
-          icon: Icon(
+          icon: const Icon(
             Icons.search,
             semanticLabel: 'search',
           ),
@@ -68,7 +68,7 @@ class _BackdropState extends State<Backdrop>
           },
         ),
         IconButton(
-          icon: Icon(
+          icon: const Icon(
             Icons.tune,
             semanticLabel: 'filter',
           ),
