@@ -13,16 +13,30 @@
 // limitations under the License.
 
 import 'package:flutter/material.dart';
-import 'package:shrine/supplemental/cut_corners_border.dart';
 import 'backdrop.dart';
+import 'category_menu_page.dart';
 import 'colors.dart';
 import 'home.dart';
 import 'login.dart';
 import 'model/product.dart';
+import 'supplemental/cut_corners_border.dart';
 
 // TODO: Convert ShrineApp to stateful widget (104)
-class ShrineApp extends StatelessWidget {
+class ShrineApp extends StatefulWidget {
   const ShrineApp({Key? key}) : super(key: key);
+
+  @override
+  State<ShrineApp> createState() => _ShrineAppState();
+}
+
+class _ShrineAppState extends State<ShrineApp> {
+  Category _currentCategory = Category.all;
+
+  void _onCategoryTap(Category category) {
+    setState(() {
+      _currentCategory = category;
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -34,11 +48,14 @@ class ShrineApp extends StatelessWidget {
         // TODO: Change to a Backdrop with a HomePage frontLayer (104)
         '/': (BuildContext context) => Backdrop(
               // TODO: Make currentCategory field take _currentCategory (104)
-              currentCategory: Category.all,
+              currentCategory: _currentCategory,
               // TODO: Pass _currentCategory for frontLayer (104)
-              frontLayer: const HomePage(),
+              frontLayer: HomePage(category: _currentCategory),
               // TODO: Change backLayer field value to CategoryMenuPage (104)
-              backLayer: Container(color: kShrinePink100),
+              backLayer: CategoryMenuPage(
+                currentCategory: _currentCategory,
+                onCategoryTap: _onCategoryTap,
+              ),
               frontTitle: const Text('SHRINE'),
               backTitle: const Text('MENU'),
             ),
@@ -53,16 +70,17 @@ class ShrineApp extends StatelessWidget {
 final ThemeData _kShrineTheme = _buildShrineTheme();
 const kShrinePurple = Color(0xFF5D1049);
 ThemeData _buildShrineTheme() {
-  final ThemeData base = ThemeData.light();
+  final ThemeData base = ThemeData.light(useMaterial3: true);
   return base.copyWith(
     colorScheme: base.colorScheme.copyWith(
-      primary: kShrinePurple,
-      secondary: kShrinePurple,
+      primary: kShrinePink100,
+      onPrimary: kShrineBrown900,
+      secondary: kShrineBrown900,
       error: kShrineErrorRed,
     ),
-    scaffoldBackgroundColor: kShrineSurfaceWhite,
+    textTheme: _buildShrineTextTheme(base.textTheme),
     textSelectionTheme: const TextSelectionThemeData(
-      selectionColor: kShrinePurple,
+      selectionColor: kShrinePink100,
     ),
     appBarTheme: const AppBarTheme(
       foregroundColor: kShrineBrown900,
@@ -73,11 +91,11 @@ ThemeData _buildShrineTheme() {
       focusedBorder: CutCornersBorder(
         borderSide: BorderSide(
           width: 2.0,
-          color: kShrinePurple,
+          color: kShrineBrown900,
         ),
       ),
       floatingLabelStyle: TextStyle(
-        color: kShrinePurple,
+        color: kShrineBrown900,
       ),
     ),
   );
