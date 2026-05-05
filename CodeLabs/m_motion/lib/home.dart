@@ -249,7 +249,7 @@ class HomePageState extends State<HomePage> with TickerProviderStateMixin {
       begin: RelativeRect.fromLTRB(0.0, drawerTop, 0.0, 0.0),
       end: const RelativeRect.fromLTRB(0.0, 0.0, 0.0, 0.0),
     ).animate(_drawerCurve);
-    
+
     return Stack(
       clipBehavior: Clip.none,
       key: _bottomDrawerKey,
@@ -683,7 +683,7 @@ class _MailRouter extends StatelessWidget {
 }
 
 class _ReplyLogo extends StatelessWidget {
-  const _ReplyLogo({super.key});
+  const _ReplyLogo();
 
   @override
   Widget build(BuildContext context) {

@@ -11,27 +11,24 @@ class ReplyApp extends StatefulWidget {
   const ReplyApp({super.key});
 
   @override
-  State<ReplyApp> createState() => _ReplyAppState();
+  ReplyAppState createState() => ReplyAppState();
 }
 
-class _ReplyAppState extends State<ReplyApp> {
-  late final RouterProvider _replyState;
-  late final ReplyRouterDelegate _routerDelegate;
+class ReplyAppState extends State<ReplyApp> {
+  final RouterProvider _replyState = RouterProvider(const ReplyHomePath());
   final ReplyRouteInformationParser _routeInformationParser =
       ReplyRouteInformationParser();
+  late final ReplyRouterDelegate _routerDelegate;
 
   @override
   void initState() {
     super.initState();
-
-    _replyState = RouterProvider(const ReplyHomePath());
     _routerDelegate = ReplyRouterDelegate(replyState: _replyState);
   }
 
   @override
   void dispose() {
     _routerDelegate.dispose();
-    _replyState.dispose(); // ✅ Important fix
     super.dispose();
   }
 
@@ -39,32 +36,37 @@ class _ReplyAppState extends State<ReplyApp> {
   Widget build(BuildContext context) {
     return MultiProvider(
       providers: [
-        ChangeNotifierProvider(create: (_) => EmailStore()), // ✅ FIXED
+        ChangeNotifierProvider<EmailStore>.value(value: EmailStore()),
       ],
       child: Selector<EmailStore, ThemeMode>(
-        selector: (_, emailStore) => emailStore.themeMode,
-        builder: (_, themeMode, __) {
-          return MaterialApp.router(
-            debugShowCheckedModeBanner: false, // ✅ Production standard
-            routeInformationParser: _routeInformationParser,
-            routerDelegate: _routerDelegate,
-            themeMode: themeMode,
-            title: 'Reply',
-            darkTheme: _buildReplyDarkTheme(),
-            theme: _buildReplyLightTheme(),
-          );
-        },
-      ),
+          selector: (context, emailStore) => emailStore.themeMode,
+          builder: (context, themeMode, child) {
+            return MaterialApp.router(
+              routeInformationParser: _routeInformationParser,
+              routerDelegate: _routerDelegate,
+              themeMode: themeMode,
+              title: 'Reply',
+              darkTheme: _buildReplyDarkTheme(context),
+              theme: _buildReplyLightTheme(context),
+            );
+          }),
     );
   }
 }
 
-ThemeData _buildReplyLightTheme() {
+ThemeData _buildReplyLightTheme(BuildContext context) {
   final base = ThemeData.light();
-
   return base.copyWith(
-    scaffoldBackgroundColor: ReplyColors.blue50,
+    bottomSheetTheme: BottomSheetThemeData(
+      backgroundColor: ReplyColors.blue700,
+      modalBackgroundColor: Colors.white.withOpacity(0.7),
+    ),
     cardColor: ReplyColors.white50,
+    chipTheme: _buildChipTheme(
+      ReplyColors.blue700,
+      ReplyColors.lightChipBackground,
+      Brightness.light,
+    ),
     colorScheme: const ColorScheme.light(
       primary: ReplyColors.blue700,
       secondary: ReplyColors.orange500,
@@ -76,27 +78,26 @@ ThemeData _buildReplyLightTheme() {
       onError: ReplyColors.black900,
     ),
     textTheme: _buildReplyLightTextTheme(base.textTheme),
-    bottomSheetTheme: BottomSheetThemeData(
-      backgroundColor: ReplyColors.blue700,
-      modalBackgroundColor: Colors.white.withOpacity(0.7),
-    ),
+    scaffoldBackgroundColor: ReplyColors.blue50,
     bottomAppBarTheme: const BottomAppBarThemeData(
       color: ReplyColors.blue700,
-    ),
-    chipTheme: _buildChipTheme(
-      ReplyColors.blue700,
-      ReplyColors.lightChipBackground,
-      Brightness.light,
     ),
   );
 }
 
-ThemeData _buildReplyDarkTheme() {
+ThemeData _buildReplyDarkTheme(BuildContext context) {
   final base = ThemeData.dark();
-
   return base.copyWith(
-    scaffoldBackgroundColor: ReplyColors.black900,
+    bottomSheetTheme: BottomSheetThemeData(
+      backgroundColor: ReplyColors.darkDrawerBackground,
+      modalBackgroundColor: Colors.black.withOpacity(0.7),
+    ),
     cardColor: ReplyColors.darkCardBackground,
+    chipTheme: _buildChipTheme(
+      ReplyColors.blue200,
+      ReplyColors.darkChipBackground,
+      Brightness.dark,
+    ),
     colorScheme: const ColorScheme.dark(
       primary: ReplyColors.blue200,
       secondary: ReplyColors.orange300,
@@ -108,17 +109,9 @@ ThemeData _buildReplyDarkTheme() {
       onError: ReplyColors.black900,
     ),
     textTheme: _buildReplyDarkTextTheme(base.textTheme),
-    bottomSheetTheme: BottomSheetThemeData(
-      backgroundColor: ReplyColors.darkDrawerBackground,
-      modalBackgroundColor: Colors.black.withOpacity(0.7),
-    ),
+    scaffoldBackgroundColor: ReplyColors.black900,
     bottomAppBarTheme: const BottomAppBarThemeData(
       color: ReplyColors.darkBottomAppBarBackground,
-    ),
-    chipTheme: _buildChipTheme(
-      ReplyColors.blue200,
-      ReplyColors.darkChipBackground,
-      Brightness.dark,
     ),
   );
 }
@@ -128,10 +121,6 @@ ChipThemeData _buildChipTheme(
   Color chipBackground,
   Brightness brightness,
 ) {
-  final textColor = brightness == Brightness.dark
-      ? ReplyColors.white50
-      : ReplyColors.black900;
-
   return ChipThemeData(
     backgroundColor: primaryColor.withOpacity(0.12),
     disabledColor: primaryColor.withOpacity(0.87),
@@ -139,8 +128,12 @@ ChipThemeData _buildChipTheme(
     secondarySelectedColor: chipBackground,
     padding: const EdgeInsets.all(4),
     shape: const StadiumBorder(),
-    labelStyle: GoogleFonts.workSans(color: textColor),
-    secondaryLabelStyle: GoogleFonts.workSans(),
+    labelStyle: GoogleFonts.workSansTextTheme().bodyMedium!.copyWith(
+          color: brightness == Brightness.dark
+              ? ReplyColors.white50
+              : ReplyColors.black900,
+        ),
+    secondaryLabelStyle: GoogleFonts.workSansTextTheme().bodyMedium!,
     brightness: brightness,
   );
 }
@@ -150,8 +143,8 @@ TextTheme _buildReplyLightTextTheme(TextTheme base) {
     headlineMedium: GoogleFonts.workSans(
       fontWeight: FontWeight.w600,
       fontSize: 34,
-      height: 0.9,
       letterSpacing: 0.4,
+      height: 0.9,
       color: ReplyColors.black900,
     ),
     headlineSmall: GoogleFonts.workSans(
@@ -166,9 +159,28 @@ TextTheme _buildReplyLightTextTheme(TextTheme base) {
       letterSpacing: 0.18,
       color: ReplyColors.black900,
     ),
+    titleSmall: GoogleFonts.workSans(
+      fontWeight: FontWeight.w600,
+      fontSize: 14,
+      letterSpacing: -0.04,
+      color: ReplyColors.black900,
+    ),
+    bodyLarge: GoogleFonts.workSans(
+      fontWeight: FontWeight.normal,
+      fontSize: 18,
+      letterSpacing: 0.2,
+      color: ReplyColors.black900,
+    ),
     bodyMedium: GoogleFonts.workSans(
+      fontWeight: FontWeight.normal,
       fontSize: 14,
       letterSpacing: -0.05,
+      color: ReplyColors.black900,
+    ),
+    bodySmall: GoogleFonts.workSans(
+      fontWeight: FontWeight.normal,
+      fontSize: 12,
+      letterSpacing: 0.2,
       color: ReplyColors.black900,
     ),
   );
@@ -179,8 +191,8 @@ TextTheme _buildReplyDarkTextTheme(TextTheme base) {
     headlineMedium: GoogleFonts.workSans(
       fontWeight: FontWeight.w600,
       fontSize: 34,
-      height: 0.9,
       letterSpacing: 0.4,
+      height: 0.9,
       color: ReplyColors.white50,
     ),
     headlineSmall: GoogleFonts.workSans(
@@ -195,9 +207,28 @@ TextTheme _buildReplyDarkTextTheme(TextTheme base) {
       letterSpacing: 0.18,
       color: ReplyColors.white50,
     ),
+    titleSmall: GoogleFonts.workSans(
+      fontWeight: FontWeight.w600,
+      fontSize: 14,
+      letterSpacing: -0.04,
+      color: ReplyColors.white50,
+    ),
+    bodyLarge: GoogleFonts.workSans(
+      fontWeight: FontWeight.normal,
+      fontSize: 18,
+      letterSpacing: 0.2,
+      color: ReplyColors.white50,
+    ),
     bodyMedium: GoogleFonts.workSans(
+      fontWeight: FontWeight.normal,
       fontSize: 14,
       letterSpacing: -0.05,
+      color: ReplyColors.white50,
+    ),
+    bodySmall: GoogleFonts.workSans(
+      fontWeight: FontWeight.normal,
+      fontSize: 12,
+      letterSpacing: 0.2,
       color: ReplyColors.white50,
     ),
   );

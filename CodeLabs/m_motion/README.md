@@ -1,16 +1,19 @@
-# m_motion
+# Codelab: Building Beautiful Transitions with Material Motion for Flutter
 
-A new Flutter project.
+The Material motion system for Flutter is a set of transition patterns within
+the [Animations package](https://pub.dev/packages/animations) that can help
+users understand and navigate an app, as described in the
+[Material Design guidelines](https://material.io/design/motion/the-motion-system.html).
 
-## Getting Started
+This repo houses the source for the
+[Material motion system codelab](https://codelabs.developers.google.com/codelabs/material-motion-flutter),
+during which you will build Material transitions into an example email app
+called Reply.
 
-This project is a starting point for a Flutter application.
+The starter code is available on the default `starter` branch, and the complete
+code is available on the `complete` branch, which can you can checkout by
+running `git checkout complete`.
 
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+| Android | iOS |
+|----|----|
+|![Reply transitions for Android](screenshots/reply-transitions-android.gif) |![Reply transitions for iOS](screenshots/reply-transitions-iOS.gif)|
