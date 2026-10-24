@@ -5,6 +5,8 @@ void main() {
 }
 
 class MyApp extends StatelessWidget {
+  const MyApp({super.key});
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -19,6 +21,8 @@ class MyApp extends StatelessWidget {
 }
 
 class MyHomePage extends StatelessWidget {
+  const MyHomePage({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -29,6 +33,8 @@ class MyHomePage extends StatelessWidget {
 }
 
 class TestWidget extends StatelessWidget {
+  const TestWidget({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Text("Hello World!");
@@ -65,14 +71,14 @@ class _TextInputWidgetState extends State<TextInputWidget> {
     return Column(
       children: <Widget>[
         TextField(
-          controller: this.controller,
+          controller: controller,
           decoration: InputDecoration(
             prefixIcon: Icon(Icons.message_outlined),
             labelText: "Type a message:",
           ),
-          onChanged: (text) => this.changeText(text),
+          onChanged: (text) => changeText(text),
         ),
-        Text(this.text),
+        Text(text),
       ],
     );
   }
