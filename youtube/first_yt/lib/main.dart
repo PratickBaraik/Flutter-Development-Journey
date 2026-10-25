@@ -13,7 +13,7 @@ class MyApp extends StatelessWidget {
       title: "Yt First App",
       theme: ThemeData(
         primarySwatch: Colors.orange,
-        visualDensity: VisualDensity.adaptivePlatformDensity,
+        visualDensity: VisualDensity.adaptivePlatformDensity, 
       ),
       home: MyHomePage(),
     );
