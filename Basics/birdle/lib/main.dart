@@ -69,9 +69,49 @@ class GamePage extends StatelessWidget {
       child: Column(
         spacing: 5.0,
         children: [
-          for (final guess in _game.guesses) Row(spacing: 5.0, children: []),
+          for (final guess in _game.guesses)
+            Row(
+              spacing: 5.0,
+              children: [
+                for (final letter in guess) Tile(letter.char, letter.type),
+              ],
+            ),
         ],
       ),
+    );
+  }
+}
+
+class GuessInput extends StatelessWidget {
+  GuessInput({super.key, required this.onSubmitGuess});
+
+  final void Function(String) onSubmitGuess;
+
+  // adding text edit controller
+  final TextEditingController _textEditingController = TextEditingController();
+
+  @override
+  Widget build(BuildContext context) {
+    return Row(
+      children: [
+        Expanded(
+          child: Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: TextField(
+              maxLength: 5,
+              decoration: InputDecoration(
+                border: OutlineInputBorder(
+                  borderRadius: BorderRadius.all(Radius.circular(35)),
+                ),
+              ),
+              controller: _textEditingController, // using text edit controller
+              onSubmitted: (input) {
+                print(_textEditingController.text); // temporarily using the controller )
+              }
+            ),
+          ),
+        ),
+      ],
     );
   }
 }
