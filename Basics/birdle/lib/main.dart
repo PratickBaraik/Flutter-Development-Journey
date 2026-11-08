@@ -33,7 +33,10 @@ class Tile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return AnimatedContainer(
+      // added animated container
+      duration: Duration(milliseconds: 500), // with duration
+      curve: Curves.bounceIn, // with a curve
       width: 60,
       height: 60,
       decoration: BoxDecoration(
@@ -151,7 +154,7 @@ class _GuessInputState extends State<GuessInput> {
         ),
         IconButton(
           padding: EdgeInsets.zero,
-          
+
           icon: const Icon(Icons.arrow_circle_up),
           onPressed: _onSubmit,
           iconSize: 50.0,
