@@ -1,16 +1,8 @@
 import 'package:flutter/material.dart';
 
-void main() {
-  runApp(const MainApp());
-}
+import 'alignTransition.dart';
+import 'animatedAlign.dart';
 
-class MainApp extends StatelessWidget {
-  const MainApp({super.key});
+/// flutter code sample for [AlignTransition].
 
-  @override
-  Widget build(BuildContext context) {
-    return const MaterialApp(
-      home: Scaffold(body: Center(child: Text('Hello World!'))),
-    );
-  }
-}
+void main() => runApp(const AnimatedAlignExampleApp());
